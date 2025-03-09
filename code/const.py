@@ -1,10 +1,9 @@
 WIN_WIDTH = 576
 WIN_HEIGHT = 324
 
-C_ORANGE = (0, 0, 0)
-C_YELLOW = (0, 0, 0)
-C_WHITE = (0, 0, 0)
+C_GREEN = (128, 255, 0)
+C_GRAY = (64, 64, 64)
+C_BLACK = (0, 0, 0)
+C_WHITE = (255, 255, 255)
 
-MENU_OPTION = ("New"
-               "Load"
-               "Exit")
+MENU_OPTION = ("New", "Score", "Exit")
