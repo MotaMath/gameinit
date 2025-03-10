@@ -19,9 +19,9 @@ class Menu:
             self.menu_text(10, "@Matheus Mota Ribeiro", C_BLACK, ((WIN_WIDTH / 8), 300))
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(30, MENU_OPTION[i], C_BLACK, ((WIN_WIDTH / 3), 120 + 30 * i))
+                    self.menu_text(30, MENU_OPTION[i], C_BLACK, ((WIN_WIDTH / 3), 120 + 35 * i))
                 else:
-                    self.menu_text(30, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 3), 120 + 30 * i))
+                    self.menu_text(30, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 3), 120 + 35 * i))
             pygame.display.flip()
 
             # Check for all events
