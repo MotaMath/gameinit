@@ -1,4 +1,7 @@
 import pygame.image
+from pygame import Surface, Rect
+from pygame.font import Font
+
 from code.score import Score
 from code.const import WIN_HEIGHT, WIN_WIDTH, MENU_OPTION, C_GRAY, C_BLACK, C_GREEN, C_WHITE
 
