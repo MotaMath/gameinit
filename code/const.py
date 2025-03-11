@@ -1,3 +1,4 @@
+import random
 import pygame
 
 WIN_WIDTH = 576
@@ -18,8 +19,13 @@ SPEED = {
     "map1_5": 4,
     "map1_6": 5,
     "map1_7": 6,
-    "rocks1": 2,
+    "rock": 3,
+    "pointer": 4
 
 }
 
+JUMP = 1
+
 EVENT_ENEMY = pygame.USEREVENT + 1
+
+MILLI = random.randint(2000, 10000)

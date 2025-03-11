@@ -1,26 +1,32 @@
+import random
 import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.const import C_WHITE, EVENT_ENEMY
+from code.const import C_WHITE, EVENT_ENEMY, MILLI
 from code.entity import Entity
 from code.factory import Factory
+from code.player import Player
 
 
 class Map:
     def __init__(self, screen, name):
+        self.timeout = 20000
         self.screen = screen
         self.name = name
         self.entity_list: list[Entity] = []
         self.entity_list.extend(Factory.get_entity("map1_"))
         self.entity_list.append(Factory.get_entity("jump2"))
-        self.entity_list.append(Factory.get_entity("rocks1"))
-        pygame.time.set_timer(EVENT_ENEMY, 20000)
-        self.timeout = 20000
+        self.entity_list.append(Factory.get_entity("rock"))
+        self.random_time = random.randint(2000, 6000)
+
+    def reset_obstacle_timer(self):
+        pygame.time.set_timer(EVENT_ENEMY, self.random_time)
 
     def run(self):
         pygame.mixer_music.load("./asset/map1_sound.wav")
         pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()
+        self.reset_obstacle_timer()
         while True:
             clock.tick(60)
             for ent in self.entity_list:
@@ -30,6 +36,11 @@ class Map:
             self.map_print(15, f"Time: {self.timeout / 1000:.1f}", C_WHITE, (50, 40))
             pygame.display.flip()
             for event in pygame.event.get():
+                if event.type == pygame.K_w:
+                    self.reset_obstacle_timer() # Fix rand
+                if event.type == EVENT_ENEMY:
+                    self.entity_list.append(Factory.get_entity("rock"))
+                    self.entity_list.append(Factory.get_entity("pointer"))
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
@@ -39,3 +50,5 @@ class Map:
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
         self.screen.blit(source=text_surf, dest=text_rect)
+
+

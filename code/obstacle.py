@@ -1,4 +1,8 @@
-from code.const import WIN_WIDTH, SPEED
+import random
+
+import pygame
+
+from code.const import WIN_WIDTH, SPEED, EVENT_ENEMY
 from code.entity import Entity
 
 
@@ -8,5 +12,6 @@ class Obstacle(Entity):
 
     def move(self):
         self.rect.centerx -= SPEED[self.name]
-        if self.rect.right <= 0:
-            self.rect.left = WIN_WIDTH
+
+    def hit(self):
+        pass
