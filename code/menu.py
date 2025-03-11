@@ -5,6 +5,7 @@ from pygame.font import Font
 from code.score import Score
 from code.const import WIN_HEIGHT, WIN_WIDTH, MENU_OPTION, C_GRAY, C_BLACK, C_GREEN, C_WHITE
 
+
 class Menu:
     def __init__(self, screen):
         self.screen = screen
@@ -13,7 +14,7 @@ class Menu:
 
     def run(self):
         menu_option = 0
-        pygame.mixer_music.load('./asset/menu_song.wav')
+        pygame.mixer_music.load("./asset/menu_song.wav")
         pygame.mixer_music.play(-1)
         while True:
             # DRAW IMAGES
