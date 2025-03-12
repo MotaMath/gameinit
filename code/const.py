@@ -24,8 +24,21 @@ SPEED = {
 
 }
 
+ENTITY_HEALTH = {
+    "map1_1": 999,
+    "map1_2": 999,
+    "map1_3": 999,
+    "map1_4": 999,
+    "map1_5": 999,
+    "map1_6": 999,
+    "map1_7": 999,
+    "jump2": 1,
+    "rock": 1,
+    "pointer": 999
+}
+
 JUMP = 1
 
 EVENT_ENEMY = pygame.USEREVENT + 1
 
-MILLI = random.randint(2000, 10000)
+MILLI = random.randint(800, 2000)

@@ -1,8 +1,5 @@
-import pygame
-
 from code.const import WIN_WIDTH, SPEED
 from code.entity import Entity
-from code.player import Player
 
 
 class Background(Entity):

@@ -1,8 +1,6 @@
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
-
-from code.score import Score
 from code.const import WIN_HEIGHT, WIN_WIDTH, MENU_OPTION, C_GRAY, C_BLACK, C_GREEN, C_WHITE
 
 
@@ -19,7 +17,7 @@ class Menu:
         while True:
             # DRAW IMAGES
             self.screen.blit(source=self.surf, dest=self.rect)
-            self.menu_text(60, "Wolf Master", C_BLACK, ((WIN_WIDTH / 3), 70))
+            self.menu_text(60, "Predator", C_BLACK, ((WIN_WIDTH / 3), 70))
             self.menu_text(10, "@Matheus Mota Ribeiro", C_BLACK, ((WIN_WIDTH / 8), 300))
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:

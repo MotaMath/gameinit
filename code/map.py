@@ -2,14 +2,14 @@ import random
 import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.const import C_WHITE, EVENT_ENEMY, MILLI
+from code.const import C_WHITE, EVENT_ENEMY, MILLI, WIN_WIDTH, ENTITY_HEALTH
 from code.entity import Entity
 from code.factory import Factory
-from code.player import Player
 
 
 class Map:
     def __init__(self, screen, name):
+        self.random_time = None
         self.timeout = 20000
         self.screen = screen
         self.name = name
@@ -17,16 +17,16 @@ class Map:
         self.entity_list.extend(Factory.get_entity("map1_"))
         self.entity_list.append(Factory.get_entity("jump2"))
         self.entity_list.append(Factory.get_entity("rock"))
-        self.random_time = random.randint(2000, 6000)
+        pygame.time.set_timer(EVENT_ENEMY, MILLI)
 
-    def reset_obstacle_timer(self):
+    def set_random_obstacle_timer(self):
+        self.random_time = random.randint(800, 2000)
         pygame.time.set_timer(EVENT_ENEMY, self.random_time)
 
     def run(self):
         pygame.mixer_music.load("./asset/map1_sound.wav")
         pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()
-        self.reset_obstacle_timer()
         while True:
             clock.tick(60)
             for ent in self.entity_list:
@@ -36,11 +36,9 @@ class Map:
             self.map_print(15, f"Time: {self.timeout / 1000:.1f}", C_WHITE, (50, 40))
             pygame.display.flip()
             for event in pygame.event.get():
-                if event.type == pygame.K_w:
-                    self.reset_obstacle_timer() # Fix rand
                 if event.type == EVENT_ENEMY:
                     self.entity_list.append(Factory.get_entity("rock"))
-                    self.entity_list.append(Factory.get_entity("pointer"))
+                    self.set_random_obstacle_timer()
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()

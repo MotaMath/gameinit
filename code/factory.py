@@ -1,5 +1,3 @@
-import pygame
-
 from code.background import Background
 from code.const import WIN_WIDTH, WIN_HEIGHT
 from code.obstacle import Obstacle
@@ -22,4 +20,4 @@ class Factory:
             case "rock":
                 return Obstacle("rock", (WIN_WIDTH - 40, 240))
             case "pointer":
-                return Obstacle("pointer", (WIN_WIDTH - 40, 250))
+                return Obstacle("pointer", (WIN_WIDTH - 40, 280))

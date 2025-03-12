@@ -1,9 +1,4 @@
-
-
 import pygame.key
-from pygame.examples.blend_fill import data_dir
-
-from code.const import JUMP
 from code.entity import Entity
 
 
