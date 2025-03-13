@@ -5,11 +5,11 @@ from code.entity import Entity
 class Player(Entity):
     def __init__(self, name, position):
         super().__init__(name, position)
-        self.rect = pygame.Rect(50, 0, 200, 70)
+        self.rect = self.surf.get_rect(left=position[0], top=position[1])
         self.velocity_y = 0
-        self.jump_power = -10
-        self.gravity = 0.5
-        self.ground_y = 300
+        self.jump_power = -16
+        self.gravity = 0.8
+        self.ground_y = 280
 
     def move(self):
         pressed_key = pygame.key.get_pressed()

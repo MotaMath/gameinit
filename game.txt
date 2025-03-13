@@ -2,9 +2,15 @@
 2. Create .gitignore file
 3. Install packages
 4. Create requirements.txt - pip freeze > requirements.txt
+5. Create package file
+6. Create asset file
+7. Code classes
+8. Start game in main.py
+9. Create .exe for the complete game
+
+# Predator
 
 Links:
-
 
 https://craftpix.net/freebies/
 https://freesound.org/

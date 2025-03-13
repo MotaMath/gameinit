@@ -1,3 +1,4 @@
+import random
 from code.background import Background
 from code.const import WIN_WIDTH, WIN_HEIGHT
 from code.obstacle import Obstacle
@@ -15,9 +16,7 @@ class Factory:
                     list_map.append(Background(f"map1_{i}", (0, 0)))
                     list_map.append(Background(f"map1_{i}", (WIN_WIDTH, 0)))
                 return list_map
-            case "jump2":
-                return Player("jump2", (50, 100))
-            case "rock":
-                return Obstacle("rock", (WIN_WIDTH - 40, 240))
-            case "pointer":
-                return Obstacle("pointer", (WIN_WIDTH - 40, 280))
+            case "predator":
+                return Player("predator", (50, 500))
+            case "gold":
+                return Obstacle("gold", (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))

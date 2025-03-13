@@ -1,21 +1,13 @@
-# Example file showing a circle moving on screen
-from idlelib.calltip import get_entity
-
 import pygame
-
-from code import player
-from code.factory import Factory
 from code.menu import Menu
 from code.map import Map
-from code.player import Player
 from code.const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTION
 
 
-# Name of the game
+# Name: Predator
 
 class Game:
     def __init__(self):
-        # pygame setup
         pygame.init()
         self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 

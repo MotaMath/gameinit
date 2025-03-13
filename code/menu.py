@@ -1,7 +1,7 @@
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.const import WIN_HEIGHT, WIN_WIDTH, MENU_OPTION, C_GRAY, C_BLACK, C_GREEN, C_WHITE
+from code.const import WIN_WIDTH, MENU_OPTION, C_BLACK, C_WHITE
 
 
 class Menu:
@@ -15,7 +15,6 @@ class Menu:
         pygame.mixer_music.load("./asset/menu_song.wav")
         pygame.mixer_music.play(-1)
         while True:
-            # DRAW IMAGES
             self.screen.blit(source=self.surf, dest=self.rect)
             self.menu_text(60, "Predator", C_BLACK, ((WIN_WIDTH / 3), 70))
             self.menu_text(10, "@Matheus Mota Ribeiro", C_BLACK, ((WIN_WIDTH / 8), 300))

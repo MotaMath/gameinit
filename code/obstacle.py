@@ -1,5 +1,3 @@
-import pygame
-
 from code.const import SPEED
 from code.entity import Entity
 

@@ -19,22 +19,7 @@ SPEED = {
     "map1_5": 4,
     "map1_6": 5,
     "map1_7": 6,
-    "rock": 3,
-    "pointer": 4
-
-}
-
-ENTITY_HEALTH = {
-    "map1_1": 999,
-    "map1_2": 999,
-    "map1_3": 999,
-    "map1_4": 999,
-    "map1_5": 999,
-    "map1_6": 999,
-    "map1_7": 999,
-    "jump2": 1,
-    "rock": 1,
-    "pointer": 999
+    "gold": random.randint(1, 8),
 }
 
 JUMP = 1
