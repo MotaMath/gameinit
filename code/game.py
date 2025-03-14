@@ -1,10 +1,11 @@
 import pygame
+from code.save import Save
 from code.menu import Menu
 from code.map import Map
 from code.const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTION
 
 
-# Name: Predator
+# Game Name: Predator
 
 class Game:
     def __init__(self):
@@ -14,14 +15,15 @@ class Game:
     def run(self):
         pygame.mixer_music.load("./asset/menu_song.wav")
         pygame.mixer_music.play(-1)
+        show_game = Save(self.screen)
         while True:
             menu = Menu(self.screen)
             menu_return = menu.run()
             if menu_return == MENU_OPTION[0]:
-                map1 = Map(self.screen, "Map1")
-                map1.run()
+                map_run = Map(self.screen, "Map1")
+                map_run.run()
             elif menu_return == MENU_OPTION[1]:
-                pass
+                show_game.show_score()
             elif menu_return == MENU_OPTION[2]:
                 pygame.quit()
                 quit()

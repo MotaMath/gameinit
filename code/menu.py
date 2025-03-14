@@ -25,23 +25,22 @@ class Menu:
                     self.menu_text(30, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 3), 120 + 35 * i))
             pygame.display.flip()
 
-            # Check for all events
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()  # Close Window
-                    quit()  # end pygame
+                    pygame.quit()
+                    quit()
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_DOWN:  # DOWN KEY
+                    if event.key == pygame.K_DOWN:
                         if menu_option < len(MENU_OPTION) - 1:
                             menu_option += 1
                         else:
                             menu_option = 0
-                    if event.key == pygame.K_UP:  # UP KEY
+                    if event.key == pygame.K_UP:
                         if menu_option > 0:
                             menu_option -= 1
                         else:
                             menu_option = len(MENU_OPTION) - 1
-                    if event.key == pygame.K_RETURN:  # ENTER
+                    if event.key == pygame.K_RETURN:
                         return MENU_OPTION[menu_option]
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):

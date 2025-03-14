@@ -2,15 +2,16 @@ import random
 import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.const import C_WHITE, EVENT_ENEMY, MILLI
+from code.const import C_WHITE, EVENT_ENEMY, MILLI, TIME_COMPLETE
 from code.entity import Entity
 from code.factory import Factory
 
 
 class Map:
+
     def __init__(self, screen, name):
         self.random_time = None
-        self.timeout = 20000
+        self.timeout = 60000
         self.screen = screen
         self.name = name
         self.entity_list: list[Entity] = []
@@ -19,6 +20,7 @@ class Map:
         self.entity_list.append(self.predator)
         self.score = 0
         pygame.time.set_timer(EVENT_ENEMY, MILLI)
+        pygame.time.set_timer(TIME_COMPLETE, 100)
 
     def set_random_obstacle_timer(self):
         self.random_time = random.randint(200, 1000)
@@ -33,14 +35,14 @@ class Map:
             for ent in self.entity_list:
                 self.screen.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
-
             for ent in self.entity_list:
                 if ent.name == "gold" and ent.rect.colliderect(self.predator):
-                    self.score += 1  # Increment score
+                    self.score += 1
                     self.entity_list.remove(ent)
                     break
             self.map_print(25, f"Score: {self.score}", C_WHITE, (50, 15))
             self.map_print(15, f"Time: {self.timeout / 1000:.1f}", C_WHITE, (50, 40))
+            self.map_print(12, "Press W to jump, get 100 coins to buy more time and get the highest score!", C_WHITE, (400, 15))
             pygame.display.flip()
             for event in pygame.event.get():
                 if event.type == EVENT_ENEMY:
@@ -51,6 +53,12 @@ class Map:
                             self.score += 1
                             self.entity_list.remove(ent)
                             break
+                if event.type == TIME_COMPLETE:
+                    self.timeout -= 100
+                    if self.score == 50 or self.score == 100:
+                        self.timeout += 10000
+                    if self.timeout == 0:
+                        return True
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()

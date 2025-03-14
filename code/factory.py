@@ -19,4 +19,4 @@ class Factory:
             case "predator":
                 return Player("predator", (50, 500))
             case "gold":
-                return Obstacle("gold", (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
+                return Obstacle("gold", (WIN_WIDTH + 10, random.randint(60, WIN_HEIGHT - 100)))
