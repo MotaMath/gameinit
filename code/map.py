@@ -6,25 +6,19 @@ from code.const import C_WHITE, EVENT_ENEMY, MILLI, TIME_COMPLETE
 from code.entity import Entity
 from code.factory import Factory
 
-
 class Map:
-
-    def __init__(self, screen, name):
+    def __init__(self, screen, name, score):
         self.random_time = None
-        self.timeout = 60000
+        self.timeout = 10000
         self.screen = screen
         self.name = name
         self.entity_list: list[Entity] = []
         self.entity_list.extend(Factory.get_entity("map1_"))
         self.predator = Factory.get_entity("predator")
         self.entity_list.append(self.predator)
-        self.score = 0
+        self.score = score
         pygame.time.set_timer(EVENT_ENEMY, MILLI)
         pygame.time.set_timer(TIME_COMPLETE, 100)
-
-    def set_random_obstacle_timer(self):
-        self.random_time = random.randint(200, 1000)
-        pygame.time.set_timer(EVENT_ENEMY, self.random_time)
 
     def run(self):
         pygame.mixer_music.load("./asset/map1_sound.wav")
@@ -47,7 +41,6 @@ class Map:
             for event in pygame.event.get():
                 if event.type == EVENT_ENEMY:
                     self.entity_list.append(Factory.get_entity("gold"))
-                    self.set_random_obstacle_timer()
                     for ent in self.entity_list:
                         if ent.name == "gold" and ent.rect.colliderect(self.predator):
                             self.score += 1
@@ -62,6 +55,9 @@ class Map:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
+
+    def get_score(self):
+        return self.score
 
     def map_print(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Arial", size=text_size)

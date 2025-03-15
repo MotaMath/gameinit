@@ -10,26 +10,27 @@ class Save:
         self.surf = pygame.image.load("./asset/end_game.png")
         self.rect = self.surf.get_rect(left=0, top=0)
 
-    def save_score(self, score):
+    def save_score(self, score_total: int):
         pygame.mixer_music.load("./asset/score.mp3")
         pygame.mixer_music.play(-1)
         self.screen.blit(source=self.surf, dest=self.rect)
         while True:
             self.save_print(48, "GOOD JOB!", C_WHITE, SCORE_POS["Title"])
-            self.save_print(35, "Score", C_WHITE, SCORE_POS[0])
+            self.save_print(35, f"Score {score_total}", C_WHITE, SCORE_POS[0])
+            self.save_print(35, f"Name: ", C_WHITE, SCORE_POS[2])
             pygame.display.flip()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
 
-    def show_score(self):
+    def show_score(self, score):
         pygame.mixer_music.load("./asset/score.mp3")
         pygame.mixer_music.play(-1)
         self.screen.blit(source=self.surf, dest=self.rect)
         while True:
             self.save_print(48, "SCORE!", C_WHITE, SCORE_POS["Title"])
-            self.save_print(48, "1.", C_WHITE, SCORE_POS["Title"])
+            self.save_print(48, f"1. {score}", C_WHITE, SCORE_POS[0])
             pygame.display.flip()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

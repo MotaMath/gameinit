@@ -19,7 +19,7 @@ SPEED = {
     "map1_5": 4,
     "map1_6": 5,
     "map1_7": 6,
-    "gold": random.randint(1, 8),
+    "gold": random.randint(3, 8),
 }
 
 SCORE_POS = {'Title': (WIN_WIDTH / 2, 50),
