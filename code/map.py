@@ -1,4 +1,3 @@
-import random
 import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
@@ -9,7 +8,7 @@ from code.factory import Factory
 class Map:
     def __init__(self, screen, name, score):
         self.random_time = None
-        self.timeout = 10000
+        self.timeout = 40000
         self.screen = screen
         self.name = name
         self.entity_list: list[Entity] = []
@@ -49,7 +48,7 @@ class Map:
                 if event.type == TIME_COMPLETE:
                     self.timeout -= 100
                     if self.score == 50 or self.score == 100:
-                        self.timeout += 10000
+                        self.timeout += 5000
                     if self.timeout == 0:
                         return True
                 if event.type == pygame.QUIT:

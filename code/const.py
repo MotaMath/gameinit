@@ -19,7 +19,7 @@ SPEED = {
     "map1_5": 4,
     "map1_6": 5,
     "map1_7": 6,
-    "gold": random.randint(3, 8),
+    "gold": random.randint(5, 10),
 }
 
 SCORE_POS = {'Title': (WIN_WIDTH / 2, 50),
@@ -43,4 +43,4 @@ JUMP = 1
 EVENT_ENEMY = pygame.USEREVENT + 1
 TIME_COMPLETE = pygame.USEREVENT + 2
 
-MILLI = random.randint(800, 2000)
+MILLI = random.randint(100, 1000)

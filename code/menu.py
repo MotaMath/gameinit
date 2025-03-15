@@ -24,7 +24,6 @@ class Menu:
                 else:
                     self.menu_text(30, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 3), 120 + 35 * i))
             pygame.display.flip()
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()

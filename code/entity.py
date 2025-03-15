@@ -1,6 +1,7 @@
 from abc import ABC
 import pygame
 
+
 class Entity(ABC):
     def __init__(self, name, position):
         self.name = name

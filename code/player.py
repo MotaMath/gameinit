@@ -15,7 +15,6 @@ class Player(Entity):
         pressed_key = pygame.key.get_pressed()
         if pressed_key[pygame.K_w] and self.rect.bottom >= self.ground_y:
             self.velocity_y = self.jump_power
-
         self.velocity_y += self.gravity
         self.rect.y += self.velocity_y
         if self.rect.bottom >= self.ground_y:

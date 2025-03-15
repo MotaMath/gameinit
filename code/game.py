@@ -1,5 +1,3 @@
-from idlelib.run import show_socket_error
-
 import pygame
 from code.save import Save
 from code.menu import Menu
@@ -27,7 +25,7 @@ class Game:
                 map_run.run()
                 show_game.save_score(map_run.get_score())
             elif menu_return == MENU_OPTION[1]:
-                show_game.show_score(score)
+                show_game.show_score()
             elif menu_return == MENU_OPTION[2]:
                 pygame.quit()
                 quit()
